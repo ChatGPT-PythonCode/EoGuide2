@@ -6,8 +6,7 @@ summary: Let's venture into the secret world of orcy.
 videoUrl: https://www.youtube.com/watch?v=beunm0bhMDU
 createdAt: 2026-01-24T08:49:00.000-08:00
 ---
-Endless Online server (2024) that went live at the beginning of July 2023. A small guide to help players grind those next few levels. As of this video, Endless Online is currently in its 0.4.24 update. The 0.4.25 update is scheduled to release before June 30th, 2024.
-
+Endless Online server (2024) that went live at the beginning of July 2023. 
 **Additional information:**
 
 Download client - [https://www.endless-online.com/](endless-online.com)
