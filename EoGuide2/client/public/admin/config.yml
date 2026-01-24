@@ -7,8 +7,11 @@ backend:
   branch: main
   base_url: https://eoguide2.tronnfts.workers.dev
 
+# Repo location where uploads are saved
 media_folder: "EoGuide2/client/public/uploads"
-public_folder: "/uploads"
+
+# URL used inside markdown/frontmatter for images (GitHub Pages project site)
+public_folder: "/EoGuide2/uploads"
 
 collections:
   - name: "guides"
@@ -19,13 +22,24 @@ collections:
     format: "frontmatter"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "Use lowercase + dashes (example: haunted-house)" }
+
       - label: "Category"
         name: "category"
         widget: "select"
-        options: ["quest", "travel", "class", "command", "misc"]
+        options:
+          - { label: "Quest", value: "quest" }
+          - { label: "Travel", value: "travel" }
+          - { label: "Class", value: "class" }
+          - { label: "Command", value: "command" }
+          - { label: "NPC", value: "npc" }
+          - { label: "Item", value: "item" }
+          - { label: "Updates", value: "updates" }
+          - { label: "Official Announcements", value: "announcement" }
+          - { label: "Misc", value: "misc" }
+
       - { label: "Summary", name: "summary", widget: "text" }
       - { label: "Header Image", name: "imageUrl", widget: "image", required: false }
-      - { label: "Video URL (YouTube/Vimeo)", name: "videoUrl", widget: "string", required: false }
+      - { label: "Video URL (YouTube/Vimeo/Playlist)", name: "videoUrl", widget: "string", required: false }
       - { label: "Created At", name: "createdAt", widget: "datetime", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
