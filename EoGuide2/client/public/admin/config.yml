@@ -7,10 +7,7 @@ backend:
   branch: main
   base_url: https://eoguide2.tronnfts.workers.dev
 
-# IMPORTANT: write files into the EoGuide2 subfolder (because your build runs there)
 media_folder: "EoGuide2/client/public/uploads"
-
-# IMPORTANT: GitHub Pages is served under /EoGuide2/, so use this URL prefix
 public_folder: "/EoGuide2/uploads"
 
 collections:
