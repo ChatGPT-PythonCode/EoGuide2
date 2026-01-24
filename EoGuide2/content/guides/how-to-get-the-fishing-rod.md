@@ -6,7 +6,15 @@ summary: It's time to fish!
 videoUrl: https://www.youtube.com/watch?v=6X7rSAGH5mw
 createdAt: 2026-01-24T08:49:00.000-08:00
 ---
-Endless Online server (2024) that went live at the beginning of July 2023. A small guide to help players grind those next few levels. As of this video, Endless Online is currently in its 0.4.24 update. The 0.4.25 update is scheduled to release before June 30th, 2024.
+**Endless Online server (2024) that went live at the beginning of July 2023.** 
+
+
+**Basic Fishrod** is the foundational fishing rod in *Endless Online: Recharged*, crafted using **Strings**—a material obtained from Jute, Webs, Cotton, or Silk.  
+
+### Key Details:
+
+* **Crafted At**: Aeven Sew Station or Witch Works. 
+* **Ingredients**: 5x Jute, Webs, Cotton, or Silk
 
 **Additional information:**
 
