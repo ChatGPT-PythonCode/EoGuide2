@@ -1,0 +1,37 @@
+# Decap CMS configuration for GitHub Pages
+# 1) Replace site_url + repo below
+# 2) Deploy an OAuth proxy (Cloudflare Worker / serverless) and set base_url
+# Docs: https://decapcms.org/docs/backends-overview/
+
+site_url: "https://chatgpt-pythoncode.github.io/EoGuide2/"
+search: false
+
+backend:
+  name: github
+  repo: ChatGPT-PythonCode/EoGuide2
+  branch: main
+  # Required for GitHub auth on GitHub Pages (static hosting)
+  base_url: "https://YOUR_OAUTH_PROXY_DOMAIN"
+
+media_folder: "client/public/uploads"
+public_folder: "uploads"
+
+collections:
+  - name: "guides"
+    label: "Guides"
+    folder: "content/guides"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["quest", "travel", "class", "command", "misc"]
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Header Image", name: "imageUrl", widget: "image", required: false }
+      - { label: "Video URL (YouTube/Vimeo)", name: "videoUrl", widget: "string", required: false }
+      - { label: "Created At", name: "createdAt", widget: "datetime", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
