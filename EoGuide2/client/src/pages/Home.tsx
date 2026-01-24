@@ -106,36 +106,88 @@ export default function Home() {
         )}
       </section>
 
-      {/* Categories Grid */}
-      <section className="py-20 bg-secondary/20 border-y border-border/50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Explore by Category</h2>
-            <p className="text-muted-foreground">Find exactly what you're looking for</p>
-          </div>
+{/* Categories Grid */}
+<section className="py-20 bg-secondary/20 border-y border-border/50">
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl font-bold mb-4">Explore by Category</h2>
+      <p className="text-muted-foreground">
+        Find exactly what you're looking for
+      </p>
+    </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-            {[
-              { label: 'Quests', href: '/quests', bg: 'from-amber-500/20 to-orange-600/20', border: 'hover:border-amber-500/50' },
-              { label: 'Travel', href: '/travel', bg: 'from-emerald-500/20 to-teal-600/20', border: 'hover:border-emerald-500/50' },
-              { label: 'Classes', href: '/classes', bg: 'from-violet-500/20 to-purple-600/20', border: 'hover:border-violet-500/50' },
-              { label: 'Commands', href: '/commands', bg: 'from-blue-500/20 to-cyan-600/20', border: 'hover:border-blue-500/50' },
-            ].map((cat) => (
-              <Link key={cat.href} href={cat.href}>
-                <div className={`
-                  group relative aspect-square rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer
-                  bg-gradient-to-br ${cat.bg} border border-border/50 ${cat.border}
-                  transition-all duration-300 hover:scale-[1.02] hover:shadow-xl
-                `}>
-                  <h3 className="text-xl md:text-2xl font-bold text-white group-hover:scale-110 transition-transform">
-                    {cat.label}
-                  </h3>
-                </div>
-              </Link>
-            ))}
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+      {[
+        {
+          label: "Quests",
+          href: "/quests",
+          bg: "from-amber-500/20 to-orange-600/20",
+          border: "hover:border-amber-500/50",
+        },
+        {
+          label: "Travel",
+          href: "/travel",
+          bg: "from-emerald-500/20 to-teal-600/20",
+          border: "hover:border-emerald-500/50",
+        },
+        {
+          label: "Classes",
+          href: "/classes",
+          bg: "from-violet-500/20 to-purple-600/20",
+          border: "hover:border-violet-500/50",
+        },
+        {
+          label: "NPCs",
+          href: "/npcs",
+          bg: "from-pink-500/20 to-rose-600/20",
+          border: "hover:border-pink-500/50",
+        },
+        {
+          label: "Items",
+          href: "/items",
+          bg: "from-cyan-500/20 to-sky-600/20",
+          border: "hover:border-cyan-500/50",
+        },
+        {
+          label: "Updates",
+          href: "/updates",
+          bg: "from-lime-500/20 to-green-600/20",
+          border: "hover:border-lime-500/50",
+        },
+        {
+          label: "Official Announcements",
+          href: "/announcements",
+          bg: "from-orange-500/20 to-red-600/20",
+          border: "hover:border-orange-500/50",
+        },
+        {
+          label: "Commands",
+          href: "/commands",
+          bg: "from-blue-500/20 to-cyan-600/20",
+          border: "hover:border-blue-500/50",
+        },
+      ].map((cat) => (
+        <Link key={cat.href} href={cat.href}>
+          <div
+            className={`
+              group relative aspect-square rounded-2xl p-6
+              flex flex-col items-center justify-center text-center cursor-pointer
+              bg-gradient-to-br ${cat.bg}
+              border border-border/50 ${cat.border}
+              transition-all duration-300
+              hover:scale-[1.02] hover:shadow-xl
+            `}
+          >
+            <h3 className="text-xl md:text-2xl font-bold text-white transition-transform group-hover:scale-110">
+              {cat.label}
+            </h3>
           </div>
-        </div>
-      </section>
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Latest Updates */}
       <section className="py-20 container mx-auto px-4">
