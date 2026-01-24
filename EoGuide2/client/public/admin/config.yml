@@ -3,15 +3,14 @@
 # 2) Deploy an OAuth proxy (Cloudflare Worker / serverless) and set base_url
 # Docs: https://decapcms.org/docs/backends-overview/
 
-site_url: "https://chatgpt-pythoncode.github.io/EoGuide2/"
+site_url: "site_url: https://chatgpt-pythoncode.github.io/EoGuide2/"
 search: false
 
 backend:
   name: github
   repo: ChatGPT-PythonCode/EoGuide2
   branch: main
-  # Required for GitHub auth on GitHub Pages (static hosting)
-  base_url: "https://YOUR_OAUTH_PROXY_DOMAIN"
+  base_url: https://eoguide2.tronnfts.workers.dev
 
 media_folder: "client/public/uploads"
 public_folder: "uploads"
