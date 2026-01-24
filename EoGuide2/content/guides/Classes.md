@@ -6,4 +6,4 @@ summary: "The 6  Classes Of EO. "
 imageUrl: /uploads/classes.png
 createdAt: 2026-01-23T21:04:00.000-08:00
 ---
-![](/uploads/classes.png)
+![](/EoGuide2/uploads/classes.png)
