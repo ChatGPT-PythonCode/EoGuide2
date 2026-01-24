@@ -1,9 +1,4 @@
-# Decap CMS configuration for GitHub Pages
-# 1) Replace site_url + repo below
-# 2) Deploy an OAuth proxy (Cloudflare Worker / serverless) and set base_url
-# Docs: https://decapcms.org/docs/backends-overview/
-
-site_url: "site_url: https://chatgpt-pythoncode.github.io/EoGuide2/"
+site_url: https://chatgpt-pythoncode.github.io/EoGuide2/
 search: false
 
 backend:
@@ -12,25 +7,25 @@ backend:
   branch: main
   base_url: https://eoguide2.tronnfts.workers.dev
 
-media_folder: "client/public/uploads"
-public_folder: "uploads"
+media_folder: client/public/uploads
+public_folder: /uploads
 
 collections:
-  - name: "guides"
-    label: "Guides"
-    folder: "content/guides"
+  - name: guides
+    label: Guides
+    folder: content/guides
     create: true
     slug: "{{slug}}"
-    format: "frontmatter"
+    format: frontmatter
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
-      - label: "Category"
-        name: "category"
-        widget: "select"
+      - { label: Title, name: title, widget: string }
+      - { label: Slug, name: slug, widget: string }
+      - label: Category
+        name: category
+        widget: select
         options: ["quest", "travel", "class", "command", "misc"]
-      - { label: "Summary", name: "summary", widget: "text" }
-      - { label: "Header Image", name: "imageUrl", widget: "image", required: false }
-      - { label: "Video URL (YouTube/Vimeo)", name: "videoUrl", widget: "string", required: false }
-      - { label: "Created At", name: "createdAt", widget: "datetime", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: Summary, name: summary, widget: text }
+      - { label: Header Image, name: imageUrl, widget: image, required: false }
+      - { label: Video URL (YouTube/Vimeo), name: videoUrl, widget: string, required: false }
+      - { label: Created At, name: createdAt, widget: datetime, required: false }
+      - { label: Body, name: body, widget: markdown }
