@@ -14,4 +14,4 @@ In the world of *Endless Online: Recharged*, your progression is defined by your
 **Starting the Journey**
 Every adventurer begins as a Wanderer. This neutral starting point allows you to explore the world and gather your first few levels before committing to a specialized path.
 
-![](/EoGuide2/uploads/stats.png)
+![](uploads/stats.png)
