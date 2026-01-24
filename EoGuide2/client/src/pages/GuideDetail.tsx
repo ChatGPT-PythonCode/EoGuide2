@@ -34,6 +34,20 @@ function getVideoEmbedUrl(url?: string) {
   return null;
 }
 
+/** ✅ Fix header/banners across GitHub Pages + custom domain */
+function normalizeImageUrl(p?: string) {
+  if (!p) return "";
+
+  // If some posts were saved while on GitHub Pages, they may include this prefix.
+  // On your custom domain, strip it.
+  if (p.startsWith("/EoGuide2/uploads/")) return p.replace("/EoGuide2", "");
+
+  // If Decap saved without a leading slash
+  if (p.startsWith("uploads/")) return `/${p}`;
+
+  return p;
+}
+
 export default function GuideDetail() {
   const [, params] = useRoute("/guides/:slug");
   const slug = params?.slug || "";
@@ -71,16 +85,18 @@ export default function GuideDetail() {
   };
 
   const videoEmbedUrl = getVideoEmbedUrl(guide.videoUrl);
+  const headerSrc = normalizeImageUrl(guide.imageUrl);
 
   return (
     <div className="min-h-screen bg-background pb-20">
       {/* Header Image/Gradient */}
       <div className="h-64 md:h-80 w-full relative overflow-hidden bg-secondary">
-        {guide.imageUrl ? (
+        {headerSrc ? (
           <img
-            src={guide.imageUrl}
+            src={headerSrc}
             alt={guide.title}
             className="w-full h-full object-cover opacity-50"
+            loading="lazy"
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-primary/20 via-background to-background" />
