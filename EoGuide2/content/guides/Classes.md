@@ -8,4 +8,4 @@ createdAt: 2026-01-23T21:04:00.000-08:00
 ---
 
 
-![](/EoGuide2/uploads/classes.png)
+![](https://eoguides.com/uploads/classes.png)
