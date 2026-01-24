@@ -11,7 +11,7 @@ backend:
 media_folder: "EoGuide2/client/public/uploads"
 
 # URL used inside markdown/frontmatter for images (GitHub Pages project site)
-public_folder: "/EoGuide2/uploads"
+public_folder: "/uploads"
 
 collections:
   - name: "guides"
