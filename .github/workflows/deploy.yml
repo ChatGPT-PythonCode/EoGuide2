@@ -16,10 +16,15 @@ concurrency:
 
 jobs:
   deploy:
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+
+    # All "run:" steps execute inside the EoGuide2 folder
+    defaults:
+      run:
+        working-directory: EoGuide2
 
     steps:
       - name: Checkout
@@ -30,11 +35,13 @@ jobs:
         with:
           node-version: "lts/*"
           cache: "npm"
+          # IMPORTANT: point to your lockfile inside the subfolder
+          cache-dependency-path: EoGuide2/package-lock.json
 
       - name: Install
         run: npm ci
 
-      - name: Build (generates guide JSON + builds Vite)
+      - name: Build
         run: npm run build
 
       - name: Setup Pages
@@ -43,7 +50,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: "./dist"
+          # dist is generated inside EoGuide2 because we build there
+          path: "./EoGuide2/dist"
 
       - name: Deploy to GitHub Pages
         id: deployment
