@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { type GuideSummary } from "@/hooks/use-guides";
-import { Map, Scroll, Swords, Terminal, Users, Package, Sparkles, Megaphone } from "lucide-react";
+import { Map, Scroll, Swords, Terminal } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 
@@ -9,10 +9,6 @@ const categoryIcons = {
   travel: Map,
   class: Swords,
   command: Terminal,
-  npc: Users,
-  item: Package,
-  updates: Sparkles,
-  announcement: Megaphone,
   misc: Terminal,
 } as const;
 
@@ -21,10 +17,6 @@ const categoryColors = {
   travel: "text-emerald-400 bg-emerald-400/10 border-emerald-400/20",
   class: "text-violet-400 bg-violet-400/10 border-violet-400/20",
   command: "text-blue-400 bg-blue-400/10 border-blue-400/20",
-  npc: "text-pink-400 bg-pink-400/10 border-pink-400/20",
-  item: "text-cyan-400 bg-cyan-400/10 border-cyan-400/20",
-  updates: "text-lime-400 bg-lime-400/10 border-lime-400/20",
-  announcement: "text-orange-400 bg-orange-400/10 border-orange-400/20",
   misc: "text-slate-400 bg-slate-400/10 border-slate-400/20",
 } as const;
 

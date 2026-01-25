@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { Menu, X, Gamepad2, Map, Scroll, Swords, Terminal, Search, Users, Package, Sparkles, Megaphone } from "lucide-react";
+import { Menu, X, Gamepad2, Map, Scroll, Swords, Terminal, Search } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,10 +24,6 @@ export function Navigation() {
     { label: "Travel", href: "/travel", icon: Map },
     { label: "Classes", href: "/classes", icon: Swords },
     { label: "Commands", href: "/commands", icon: Terminal },
-    { label: "NPCs", href: "/npc", icon: Users },
-    { label: "Items", href: "/item", icon: Package },
-    { label: "Updates", href: "/updates", icon: Sparkles },
-    { label: "Announcements", href: "/announcements", icon: Megaphone },
   ];
 
   return (

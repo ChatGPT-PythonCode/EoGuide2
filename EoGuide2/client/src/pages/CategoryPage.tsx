@@ -1,17 +1,13 @@
 import { useGuides } from "@/hooks/use-guides";
 import { GuideCard } from "@/components/GuideCard";
 import { useRoute } from "wouter";
-import { Loader2, Scroll, Map, Swords, Terminal, Sparkles, Megaphone } from "lucide-react";
+import { Loader2, Scroll, Map, Swords, Terminal } from "lucide-react";
 
 const categories = {
   quests: { title: "Quest Guides", description: "Walkthroughs for every quest in EO", icon: Scroll, color: "text-amber-400" },
   travel: { title: "Travel Routes", description: "Maps and directions to key locations", icon: Map, color: "text-emerald-400" },
   classes: { title: "Class Builds", description: "Stats and skill builds for every class", icon: Swords, color: "text-violet-400" },
   commands: { title: "Commands", description: "List of all in-game commands", icon: Terminal, color: "text-blue-400" },
-
-  updates: { title: "Updates", description: "Patch notes, changes, and new content", icon: Sparkles, color: "text-lime-400" },
-  announcements: { title: "Official Announcements", description: "Official news and announcements", icon: Megaphone, color: "text-orange-400" },
-  misc: { title: "Misc", description: "Everything else", icon: Terminal, color: "text-slate-400" },
 } as const;
 
 export default function CategoryPage() {
@@ -19,20 +15,16 @@ export default function CategoryPage() {
   const categoryKey = params?.category as keyof typeof categories;
   const config = categories[categoryKey];
 
-  // Map route param to guide.category value saved in posts
-  const dbCategory =
-    categoryKey === "quests" ? "quest"
-    : categoryKey === "travel" ? "travel"
-    : categoryKey === "classes" ? "class"
-    : categoryKey === "commands" ? "command"
-    : categoryKey === "updates" ? "updates"
-    : categoryKey === "announcements" ? "announcement"
-    : categoryKey === "misc" ? "misc"
+  // Map route param to DB category value
+  const dbCategory = categoryKey === 'quests' ? 'quest' 
+    : categoryKey === 'travel' ? 'travel' 
+    : categoryKey === 'classes' ? 'class'
+    : categoryKey === 'commands' ? 'command'
     : undefined;
 
   const { data: guides, isLoading } = useGuides(dbCategory);
 
-  if (!match || !config) return null;
+  if (!match || !config) return null; // Or redirect/404
 
   const Icon = config.icon;
 
@@ -60,7 +52,7 @@ export default function CategoryPage() {
         ) : guides && guides.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {guides.map((guide) => (
-              <GuideCard key={guide.slug} guide={guide} />
+              <GuideCard key={guide.id} guide={guide} />
             ))}
           </div>
         ) : (
