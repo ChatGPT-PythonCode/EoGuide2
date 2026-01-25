@@ -138,13 +138,13 @@ export default function Home() {
         },
         {
           label: "NPCs",
-          href: "/npcs",
+          href: "/npc",
           bg: "from-pink-500/20 to-rose-600/20",
           border: "hover:border-pink-500/50",
         },
         {
           label: "Items",
-          href: "/items",
+          href: "/item",
           bg: "from-cyan-500/20 to-sky-600/20",
           border: "hover:border-cyan-500/50",
         },

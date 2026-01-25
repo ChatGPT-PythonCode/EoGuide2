@@ -87,7 +87,22 @@ export default function GuideDetail() {
   const videoEmbedUrl = getVideoEmbedUrl(guide.videoUrl);
   const headerSrc = normalizeImageUrl(guide.imageUrl);
 
-  return (
+  
+
+  const categoryRoutes: Record<string, string> = {
+    quest: "quests",
+    travel: "travel",
+    class: "classes",
+    command: "commands",
+    npc: "npc",
+    item: "item",
+    updates: "updates",
+    announcement: "announcements",
+    misc: "misc",
+  };
+
+  const backRoute = categoryRoutes[guide.category] ?? "search";
+return (
     <div className="min-h-screen bg-background pb-20">
       {/* Header Image/Gradient */}
       <div className="h-64 md:h-80 w-full relative overflow-hidden bg-secondary">
@@ -105,21 +120,13 @@ export default function GuideDetail() {
 
         <div className="absolute top-4 left-4 md:top-8 md:left-8 container mx-auto">
           <Link
-            href={`/${
-              guide.category === "quest"
-                ? "quests"
-                : guide.category === "travel"
-                  ? "travel"
-                  : guide.category === "class"
-                    ? "classes"
-                    : "commands"
-            }`}
+            href={`/${backRoute}`}
           >
             <Button
               variant="ghost"
               className="text-white/80 hover:text-white hover:bg-black/20 backdrop-blur-sm"
             >
-              <ArrowLeft className="w-4 h-4 mr-2" /> Back to {guide.category}s
+              <ArrowLeft className="w-4 h-4 mr-2" /> Back
             </Button>
           </Link>
         </div>

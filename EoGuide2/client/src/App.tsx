@@ -37,21 +37,27 @@ function AppRouter() {
       <Navigation />
       <main className="flex-grow">
         <Switch>
-          <Route path="/" component={Home} />
-          <Route path="/search" component={SearchResults} />
-          <Route path="/guides/:slug" component={GuideDetail} />
+<Route path="/" component={Home} />
+<Route path="/search" component={SearchResults} />
+<Route path="/guides/:slug" component={GuideDetail} />
 
-          {/* ✅ EOR API routes MUST be before /:category */}
-          <Route path="/npcs" component={Npcs} />
-          <Route path="/npcs/:id" component={NpcDetail} />
-          <Route path="/items" component={Items} />
-          <Route path="/items/:id" component={ItemDetail} />
+{/* ✅ NPC/Item routes MUST be before /:category */}
+<Route path="/npc" component={Npcs} />
+<Route path="/npc/:id" component={NpcDetail} />
+<Route path="/item" component={Items} />
+<Route path="/item/:id" component={ItemDetail} />
 
-          {/* Category routes (posts) */}
-          <Route path="/:category" component={CategoryPage} />
+{/* Aliases (optional) */}
+<Route path="/npcs" component={Npcs} />
+<Route path="/npcs/:id" component={NpcDetail} />
+<Route path="/items" component={Items} />
+<Route path="/items/:id" component={ItemDetail} />
 
-          {/* Fallback to 404 */}
-          <Route component={NotFound} />
+{/* Category routes (posts) */}
+<Route path="/:category" component={CategoryPage} />
+
+{/* Fallback to 404 */}
+<Route component={NotFound} />
         </Switch>
       </main>
       <Footer />
