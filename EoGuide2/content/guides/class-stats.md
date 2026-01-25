@@ -3,7 +3,7 @@ title: Class Stats
 slug: Stats
 category: class
 summary: "Class Stats "
-imageUrl: EoGuide2/client/public/uploads/classes.png
+imageUrl: ""
 createdAt: 2026-01-24T15:29:00.000-08:00
 ---
 
