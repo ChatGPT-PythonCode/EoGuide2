@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-body: 'DM Sans', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+
+  /* Dark theme by default for gaming feel */
+  --background: 222 47% 11%;
+  --foreground: 210 40% 98%;
+
+  --card: 217 33% 17%;
+  --card-foreground: 210 40% 98%;
+
+  --popover: 222 47% 11%;
+  --popover-foreground: 210 40% 98%;
+
+  --primary: 262 83% 58%; /* Violet accent */
+  --primary-foreground: 210 40% 98%;
+
+  --secondary: 217 19% 27%;
+  --secondary-foreground: 210 40% 98%;
+
+  --muted: 217 19% 27%;
+  --muted-foreground: 215 20% 65%;
+
+  --accent: 142 71% 45%; /* Emerald for success/gaming feel */
+  --accent-foreground: 210 40% 98%;
+
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 217 19% 27%;
+  --input: 217 19% 27%;
+  --ring: 262 83% 58%;
+
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight text-white;
+  }
+}
+
+/* Markdown Styles */
+.prose {
+  @apply text-slate-300;
+}
+.prose h1, .prose h2, .prose h3 {
+  @apply text-white font-display;
+}
+.prose strong {
+  @apply text-white;
+}
+.prose a {
+  @apply text-primary hover:text-primary/80 transition-colors no-underline font-medium;
+}
+.prose ul {
+  @apply list-disc list-outside pl-6 space-y-2;
+}
+.prose ol {
+  @apply list-decimal list-outside pl-6 space-y-2;
+}
+.prose code {
+  @apply bg-secondary px-1.5 py-0.5 rounded text-sm font-mono text-primary-foreground;
+}
+.prose pre {
+  @apply bg-secondary p-4 rounded-lg overflow-x-auto border border-border/50;
+}
+.prose blockquote {
+  @apply border-l-4 border-primary pl-4 italic text-muted-foreground;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-secondary rounded-full border-2 border-background hover:bg-muted-foreground/50 transition-colors;
+}
