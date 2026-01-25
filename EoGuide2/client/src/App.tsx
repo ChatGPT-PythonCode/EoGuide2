@@ -13,6 +13,12 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { useEffect } from "react";
 
+// ✅ Add these imports (make sure these files exist)
+import Npcs from "@/pages/Npcs";
+import NpcDetail from "@/pages/NpcDetail";
+import Items from "@/pages/Items";
+import ItemDetail from "@/pages/ItemDetail";
+
 // Inline ScrollToTop since it wasn't explicitly asked for but is good UX
 function ScrollToTopWrapper() {
   const [pathname] = useLocation();
@@ -34,8 +40,16 @@ function AppRouter() {
           <Route path="/" component={Home} />
           <Route path="/search" component={SearchResults} />
           <Route path="/guides/:slug" component={GuideDetail} />
-          {/* Category routes */}
+
+          {/* ✅ EOR API routes MUST be before /:category */}
+          <Route path="/npcs" component={Npcs} />
+          <Route path="/npcs/:id" component={NpcDetail} />
+          <Route path="/items" component={Items} />
+          <Route path="/items/:id" component={ItemDetail} />
+
+          {/* Category routes (posts) */}
           <Route path="/:category" component={CategoryPage} />
+
           {/* Fallback to 404 */}
           <Route component={NotFound} />
         </Switch>
@@ -50,7 +64,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        <WouterRouter hook={useHashLocation}><AppRouter /></WouterRouter>
+        <WouterRouter hook={useHashLocation}>
+          <AppRouter />
+        </WouterRouter>
       </TooltipProvider>
     </QueryClientProvider>
   );
