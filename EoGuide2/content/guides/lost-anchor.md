@@ -1,11 +1,13 @@
 ---
-title: "========================================Lost Anchor"
-slug: "lost-anchor"
-category: "quest"
-summary: "Atlantis Tropica Lost Anchor 1.Go on the boat to Tropica, and make your way to the pirate cove. From the tropica port, it's 2 maps to the right (east) and 1 map"
+title: Lost Anchor
+slug: lost-anchor
+category: quest
+summary: Atlantis Tropica Lost Anchor 1.Go on the boat to Tropica, and make your
+  way to the pirate cove. From the tropica port, it's 2 maps to the right (east)
+  and 1 map
 imageUrl: ""
 videoUrl: ""
-createdAt: "2025-09-14"
+createdAt: 2025-09-14
 ---
 
 Atlantis
