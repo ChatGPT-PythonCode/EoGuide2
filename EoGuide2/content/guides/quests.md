@@ -4,12 +4,12 @@ slug: quests
 category: quest
 ---
 
-**Location:** Tropica Island  
+**Location:** Woods Of Despair  
 **Quest Giver:** Unknown  
 **Level Requirement:** Unknown  
 **Rewards:** Unknown
 
-Quests is a quest that tasks you with assisting Unknown in Tropica Island. Follow the steps below to complete the quest and earn your reward.
+Quests is a quest that tasks you with assisting Unknown in Woods Of Despair. Follow the steps below to complete the quest and earn your reward.
 
 ## Walkthrough
 
