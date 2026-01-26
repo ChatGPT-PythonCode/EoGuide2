@@ -4,12 +4,12 @@ slug: guides
 category: quest
 ---
 
-**Location:** Hallodale  
+**Location:** Tropica Island  
 **Quest Giver:** Unknown  
 **Level Requirement:** Unknown  
 **Rewards:** Unknown
 
-Guides is a quest that tasks you with assisting Unknown in Hallodale. Follow the steps below to complete the quest and earn your reward.
+Guides is a quest that tasks you with assisting Unknown in Tropica Island. Follow the steps below to complete the quest and earn your reward.
 
 ## Walkthrough
 
