@@ -9,6 +9,16 @@ type GuideMeta = {
   imageUrl?: string;
   videoUrl?: string;
   createdAt?: string;
+  /**
+   * Relative folder path under `content/guides/` (empty for root-level files).
+   * Example: `quests/Hallodale`.
+   */
+  folderPath?: string;
+  /**
+   * Convenience field for quest location folders.
+   * If a guide lives under `quests/<Location>/...`, this becomes `<Location>`.
+   */
+  locationFolder?: string;
 };
 
 function parseFrontmatter(markdown: string): { data: Record<string, string>; body: string } {
@@ -63,16 +73,37 @@ async function main() {
   const outDir = path.resolve("client/public/data/guides");
   await mkdir(outDir, { recursive: true });
 
-  const files = (await readdir(contentDir)).filter((f) => f.endsWith(".md"));
+  async function walk(dir: string): Promise<string[]> {
+    const entries = await readdir(dir, { withFileTypes: true });
+    const out: string[] = [];
+    for (const e of entries) {
+      const full = path.join(dir, e.name);
+      if (e.isDirectory()) {
+        out.push(...(await walk(full)));
+      } else if (e.isFile() && e.name.endsWith(".md")) {
+        out.push(full);
+      }
+    }
+    return out;
+  }
+
+  const files = await walk(contentDir);
 
   const index: Array<GuideMeta & { createdAt?: string }> = [];
 
-  for (const file of files) {
-    const full = path.join(contentDir, file);
+  for (const full of files) {
     const raw = await readFile(full, "utf-8");
     const { data, body } = parseFrontmatter(raw);
 
-    const title = data.title || file.replace(/\.md$/, "");
+    const rel = path.relative(contentDir, full).replace(/\\/g, "/");
+    const folderPath = path.posix.dirname(rel) === "." ? "" : path.posix.dirname(rel);
+
+    // If content is organized like: quests/<Location>/<file>.md
+    const segs = folderPath.split("/").filter(Boolean);
+    const locationFolder = segs[0]?.toLowerCase() === "quests" && segs.length >= 2 ? segs[1] : undefined;
+
+    const fileName = path.basename(full);
+    const title = data.title || fileName.replace(/\.md$/, "");
     const slug = data.slug || slugify(title);
     const category = data.category || "misc";
     const summary = data.summary || "";
@@ -94,6 +125,8 @@ async function main() {
       imageUrl: imageUrl || undefined,
       videoUrl: videoUrl || undefined,
       createdAt,
+      folderPath: folderPath || undefined,
+      locationFolder,
     };
 
     await writeFile(path.join(outDir, `${slug}.json`), JSON.stringify(guideJson, null, 2), "utf-8");
@@ -106,6 +139,8 @@ async function main() {
       imageUrl: imageUrl || undefined,
       videoUrl: videoUrl || undefined,
       createdAt,
+      folderPath: folderPath || undefined,
+      locationFolder,
     });
   }
 

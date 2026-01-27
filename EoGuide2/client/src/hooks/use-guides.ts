@@ -17,6 +17,8 @@ const GuideSummarySchema = z.object({
   imageUrl: z.string().optional(),
   videoUrl: z.string().optional(),
   createdAt: z.string().optional(),
+  folderPath: z.string().optional(),
+  locationFolder: z.string().optional(),
 });
 
 export type GuideSummary = z.infer<typeof GuideSummarySchema>;

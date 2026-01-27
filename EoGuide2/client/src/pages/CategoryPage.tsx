@@ -33,23 +33,13 @@ export default function CategoryPage() {
 
   const { data: guides, isLoading } = useGuides(dbCategory);
 
-  // --- Quest location helpers (no DB changes needed) ---
-  const extractQuestLocation = (content?: string) => {
-    if (!content) return "Unknown";
-    // Common formats seen in quest markdown imports:
-    // **Location:** Hallodale
-    // Location: Hallodale North
-    const m1 = content.match(/\*\*\s*Location\s*:\s*\*\*\s*([^\n\r]+)/i);
-    if (m1?.[1]) return m1[1].trim();
-    const m2 = content.match(/^\s*Location\s*:\s*([^\n\r]+)/im);
-    if (m2?.[1]) return m2[1].trim();
-    return "Unknown";
-  };
+  // --- Quest folder-based locations (matches `content/guides/quests/<Location>/...`) ---
+  const getQuestFolderLocation = (g: any) => g?.locationFolder || "Unknown";
 
   const questLocations = useMemo(() => {
     if (dbCategory !== "quest" || !guides) return [] as string[];
     const set = new Set<string>();
-    for (const g of guides) set.add(extractQuestLocation(g.content));
+    for (const g of guides) set.add(getQuestFolderLocation(g));
     return Array.from(set).sort((a, b) => a.localeCompare(b));
   }, [dbCategory, guides]);
 
@@ -67,14 +57,14 @@ export default function CategoryPage() {
     if (!guides) return [];
     if (dbCategory !== "quest") return guides;
     if (selectedLoc === "all") return guides;
-    return guides.filter((g) => extractQuestLocation(g.content) === selectedLoc);
+    return guides.filter((g) => getQuestFolderLocation(g) === selectedLoc);
   }, [dbCategory, guides, selectedLoc]);
 
   const groupedByLocation = useMemo(() => {
     if (dbCategory !== "quest") return null;
     const map = new Map<string, typeof filteredGuides>();
     for (const g of filteredGuides) {
-      const loc = extractQuestLocation(g.content);
+      const loc = getQuestFolderLocation(g);
       const arr = map.get(loc) || [];
       arr.push(g);
       map.set(loc, arr);
@@ -154,7 +144,7 @@ export default function CategoryPage() {
                     </div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                       {gs.map((guide) => (
-                        <GuideCard key={guide.id} guide={guide} />
+                        <GuideCard key={guide.slug} guide={guide} />
                       ))}
                     </div>
                   </section>
@@ -163,7 +153,7 @@ export default function CategoryPage() {
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredGuides.map((guide) => (
-                  <GuideCard key={guide.id} guide={guide} />
+                  <GuideCard key={guide.slug} guide={guide} />
                 ))}
               </div>
             )}
