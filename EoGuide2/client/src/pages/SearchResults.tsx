@@ -8,7 +8,10 @@ import { useState, useEffect } from "react";
 
 export default function SearchResults() {
   const [location, setLocation] = useLocation();
-  const searchParams = new URLSearchParams(window.location.search);
+
+  // When using hash-based routing (GitHub Pages), query params live inside the hash.
+  // Example: https://site/#/search?q=ant
+  const searchParams = new URLSearchParams(location.split("?")[1] || "");
   const initialQuery = searchParams.get("q") || "";
   const [search, setSearch] = useState(initialQuery);
   const [query, setQuery] = useState(initialQuery);
