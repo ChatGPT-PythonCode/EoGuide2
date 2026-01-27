@@ -1,6 +1,6 @@
 import { useGuides } from "@/hooks/use-guides";
 import { GuideCard } from "@/components/GuideCard";
-import { useRoute, useLocation } from "wouter";
+import { useLocation } from "wouter";
 import { Loader2, Scroll, Map, Swords, Terminal } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import {
@@ -19,9 +19,12 @@ const categories = {
 } as const;
 
 export default function CategoryPage() {
-  const [match, params] = useRoute("/:category");
+  // NOTE: In hash-routing mode, query strings live inside the hash (e.g. "#/quests?loc=Hallodale").
+  // Wouter route matching can fail when the query is present, so we derive the category from the current hash.
   const [location, setLocation] = useLocation();
-  const categoryKey = params?.category as keyof typeof categories;
+  const hashPath = typeof window !== "undefined" ? window.location.hash.replace(/^#/, "") : location;
+  const pathOnly = (hashPath || location).split("?")[0];
+  const categoryKey = (pathOnly.replace(/^\//, "").split("/")[0] || "") as keyof typeof categories;
   const config = categories[categoryKey];
 
   // Map route param to DB category value
@@ -75,7 +78,7 @@ export default function CategoryPage() {
       .map(([loc, gs]) => [loc, [...gs].sort((a, b) => a.title.localeCompare(b.title))] as const);
   }, [dbCategory, filteredGuides]);
 
-  if (!match || !config) return null; // Or redirect/404
+  if (!config) return null; // Or redirect/404
 
   const Icon = config.icon;
 
