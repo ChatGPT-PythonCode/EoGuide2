@@ -100,7 +100,7 @@ async function main() {
 
     // If content is organized like: quests/<Location>/<file>.md
     const segs = folderPath.split("/").filter(Boolean);
-    const locationFolder = segs[0]?.toLowerCase() === "quests" && segs.length >= 2 ? segs[1] : undefined;
+    const locationFolder = (data.category || "").toLowerCase() === "quest" && segs.length >= 1 ? segs[0] : (segs[0]?.toLowerCase() === "quests" && segs.length >= 2 ? segs[1] : undefined);
 
     const fileName = path.basename(full);
     const title = data.title || fileName.replace(/\.md$/, "");
