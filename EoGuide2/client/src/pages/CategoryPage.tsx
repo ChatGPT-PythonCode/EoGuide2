@@ -1,7 +1,7 @@
 import { useGuides } from "@/hooks/use-guides";
 import { GuideCard } from "@/components/GuideCard";
 import { useLocation } from "wouter";
-import { Loader2, Scroll, Map, Swords, Terminal } from "lucide-react";
+import { Loader2, Scroll, Map as MapIcon, Swords, Terminal } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import {
   Select,
@@ -13,7 +13,7 @@ import {
 
 const categories = {
   quests: { title: "Quest Guides", description: "Walkthroughs for every quest in EO", icon: Scroll, color: "text-amber-400" },
-  travel: { title: "Travel Routes", description: "Maps and directions to key locations", icon: Map, color: "text-emerald-400" },
+  travel: { title: "Travel Routes", description: "Maps and directions to key locations", icon: MapIcon, color: "text-emerald-400" },
   classes: { title: "Class Builds", description: "Stats and skill builds for every class", icon: Swords, color: "text-violet-400" },
   commands: { title: "Commands", description: "List of all in-game commands", icon: Terminal, color: "text-blue-400" },
 } as const;
